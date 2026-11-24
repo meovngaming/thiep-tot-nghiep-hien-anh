@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+  <defs>
+    <linearGradient id="bg6" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFFDF7"/>
+      <stop offset="100%" stop-color="#EBF3FC"/>
+    </linearGradient>
+    <linearGradient id="petal6" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFE066"/>
+      <stop offset="100%" stop-color="#D4AF37"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="600" fill="url(#bg6)"/>
+  <!-- Bouquet Wrapper -->
+  <polygon points="180,255 420,255 330,490 270,490" fill="#032B91" opacity="0.94"/>
+  <polygon points="205,255 395,255 322,478 278,478" fill="#FFFFFF" opacity="0.14"/>
+  <!-- Gold Ribbon -->
+  <rect x="256" y="418" width="88" height="22" rx="11" fill="#D4AF37"/>
+  <path d="M292,440 L265,495 L292,482 Z" fill="#D4AF37"/>
+  <path d="M308,440 L335,495 L308,482 Z" fill="#B88E1E"/>
+  <!-- Sunflowers -->
+  <g transform="translate(300, 210)">
+    <g fill="url(#petal6)">
+      <ellipse cx="0" cy="-64" rx="16" ry="34"/>
+      <ellipse cx="0" cy="64" rx="16" ry="34"/>
+      <ellipse cx="-64" cy="0" rx="34" ry="16"/>
+      <ellipse cx="64" cy="0" rx="34" ry="16"/>
+      <ellipse cx="-45" cy="-45" rx="16" ry="34" transform="rotate(-45 -45 -45)"/>
+      <ellipse cx="45" cy="-45" rx="16" ry="34" transform="rotate(45 45 -45)"/>
+      <ellipse cx="-45" cy="45" rx="16" ry="34" transform="rotate(45 -45 45)"/>
+      <ellipse cx="45" cy="45" rx="16" ry="34" transform="rotate(-45 45 45)"/>
+    </g>
+    <circle cx="0" cy="0" r="34" fill="#4A2E14"/>
+    <circle cx="0" cy="0" r="24" fill="#6B4423"/>
+  </g>
+  <!-- Accent Side Blossoms -->
+  <g transform="translate(215, 255) scale(0.58)">
+    <g fill="url(#petal6)">
+      <ellipse cx="0" cy="-60" rx="16" ry="32"/>
+      <ellipse cx="0" cy="60" rx="16" ry="32"/>
+      <ellipse cx="-60" cy="0" rx="32" ry="16"/>
+      <ellipse cx="60" cy="0" rx="32" ry="16"/>
+    </g>
+    <circle cx="0" cy="0" r="30" fill="#4A2E14"/>
+  </g>
+  <g transform="translate(388, 252) scale(0.55)">
+    <g fill="url(#petal6)">
+      <ellipse cx="0" cy="-60" rx="16" ry="32"/>
+      <ellipse cx="0" cy="60" rx="16" ry="32"/>
+      <ellipse cx="-60" cy="0" rx="32" ry="16"/>
+      <ellipse cx="60" cy="0" rx="32" ry="16"/>
+    </g>
+    <circle cx="0" cy="0" r="30" fill="#4A2E14"/>
+  </g>
+  <text x="44" y="544" font-family="Georgia, serif" font-size="24" font-weight="600" fill="#032B91">New Beginnings</text>
+  <text x="44" y="572" font-family="sans-serif" font-size="13" letter-spacing="2.5" fill="#52617E">RẠNG RỠ HÀNH TRÌNH MỚI · 29/11/2026</text>
+</svg>

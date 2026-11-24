@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 740" width="600" height="740">
+  <defs>
+    <linearGradient id="bg1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#EEF5FF"/>
+      <stop offset="55%" stop-color="#DCEBFC"/>
+      <stop offset="100%" stop-color="#C8E0FA"/>
+    </linearGradient>
+    <linearGradient id="liq1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1488DB" stop-opacity="0.88"/>
+      <stop offset="100%" stop-color="#032B91" stop-opacity="0.95"/>
+    </linearGradient>
+    <linearGradient id="gold1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F6E27A"/>
+      <stop offset="100%" stop-color="#D4AF37"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="740" fill="url(#bg1)"/>
+  <!-- Subtle benzene lattice -->
+  <g stroke="#032B91" stroke-opacity="0.1" fill="none" stroke-width="2">
+    <polygon points="110,90 155,116 155,168 110,194 65,168 65,116"/>
+    <circle cx="110" cy="142" r="24"/>
+    <polygon points="480,150 520,173 520,219 480,242 440,219 440,173"/>
+    <circle cx="480" cy="196" r="21"/>
+  </g>
+  <!-- Soft sun glow -->
+  <circle cx="460" cy="120" r="140" fill="#FFFFFF" opacity="0.45"/>
+  <!-- Lab table -->
+  <rect x="0" y="570" width="600" height="170" fill="#FFFFFF" opacity="0.72"/>
+  <line x1="0" y1="570" x2="600" y2="570" stroke="#032B91" stroke-opacity="0.14" stroke-width="2"/>
+  <!-- Erlenmeyer Flask -->
+  <g transform="translate(175, 195)">
+    <path d="M98,20 L152,20 L152,145 L228,338 C236,358 221,380 199,380 L51,380 C29,380 14,358 22,338 L98,145 Z" fill="#FFFFFF" fill-opacity="0.65" stroke="#032B91" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M58,255 C95,242 155,268 192,255 L222,334 C228,350 216,368 198,368 L52,368 C34,368 22,350 28,334 Z" fill="url(#liq1)"/>
+    <rect x="86" y="10" width="78" height="16" rx="8" fill="#FFFFFF" stroke="#032B91" stroke-width="4"/>
+    <!-- Graduation marks -->
+    <g stroke="#032B91" stroke-opacity="0.35" stroke-width="2.5" stroke-linecap="round">
+      <line x1="112" y1="190" x2="138" y2="190"/>
+      <line x1="112" y1="220" x2="130" y2="220"/>
+      <line x1="112" y1="285" x2="138" y2="285" stroke="#FFFFFF" stroke-opacity="0.6"/>
+    </g>
+    <!-- Floating gold bubbles -->
+    <circle cx="110" cy="310" r="7" fill="url(#gold1)" opacity="0.9"/>
+    <circle cx="148" cy="285" r="5" fill="#FFFFFF" opacity="0.8"/>
+    <circle cx="128" cy="215" r="6" fill="url(#gold1)" opacity="0.85"/>
+    <circle cx="122" cy="160" r="4" fill="#1488DB" opacity="0.7"/>
+  </g>
+  <!-- Small Beaker -->
+  <g transform="translate(410, 415)">
+    <rect x="0" y="0" width="110" height="160" rx="14" fill="#FFFFFF" fill-opacity="0.75" stroke="#032B91" stroke-width="3.5"/>
+    <path d="M6,88 Q55,78 104,88 L104,146 C104,151 100,154 95,154 L15,154 C10,154 6,151 6,146 Z" fill="url(#gold1)" opacity="0.78"/>
+    <line x1="18" y1="44" x2="40" y2="44" stroke="#032B91" stroke-opacity="0.3" stroke-width="2.5"/>
+    <line x1="18" y1="68" x2="34" y2="68" stroke="#032B91" stroke-opacity="0.3" stroke-width="2.5"/>
+  </g>
+  <!-- Editorial Label -->
+  <text x="44" y="660" font-family="Georgia, serif" font-size="26" font-weight="600" fill="#032B91">Chemical Engineering Lab</text>
+  <text x="44" y="692" font-family="sans-serif" font-size="14" letter-spacing="3" fill="#52617E">HCMUT · BUILDING B2</text>
+</svg>

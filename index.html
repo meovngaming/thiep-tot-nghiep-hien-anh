@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#032B91" />
+    <title>Thư Mời Lễ Tốt Nghiệp – Lê Thị Hiền Anh | HCMUT</title>
+    <meta
+      name="description"
+      content="Trân trọng kính mời bạn đến dự Lễ Tốt Nghiệp của Tân Kỹ sư Kỹ thuật Hóa học Lê Thị Hiền Anh – Trường ĐH Bách Khoa TP.HCM (HCMUT), ngày 29/11/2026."
+    />
+
+    <!-- Open Graph / Zalo & Messenger Share Preview -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Thư Mời Lễ Tốt Nghiệp – Lê Thị Hiền Anh (HCMUT)"
+    />
+    <meta
+      property="og:description"
+      content="09:00 – 12:00 | Chủ Nhật, 29/11/2026 | Tòa B2 Khoa Kỹ thuật Hóa học – 268 Lý Thường Kiệt, Q.10, TP.HCM"
+    />
+    <meta property="og:image" content="./assets/gallery/graduation-cap.svg" />
+    <meta property="og:locale" content="vi_VN" />
+
+    <!-- Fonts: Splandor & Baskerville Display PT (local/custom) + Vietnamese-native Google Fonts fallbacks (Yeseva One, Prata, Brygada 1918, Be Vietnam Pro) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Brygada+1918:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Prata&family=Yeseva+One&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+    <!-- Animated Chemical Engineering Molecular & Benzene Background Canvas -->
+    <canvas id="molecular-canvas" aria-hidden="true"></canvas>
+
+    <!-- Celebratory Confetti Overlay Canvas -->
+    <canvas id="confetti-canvas" aria-hidden="true"></canvas>
+
+    <!-- Envelope / Invitation Cover Reveal (1-tap luxury opening) -->
+    <div
+      id="envelope-cover"
+      class="envelope-cover"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Mở thiệp mời lễ tốt nghiệp"
+    >
+      <div class="envelope-frame">
+        <div class="envelope-corner envelope-corner--tl" aria-hidden="true"></div>
+        <div class="envelope-corner envelope-corner--tr" aria-hidden="true"></div>
+        <div class="envelope-corner envelope-corner--bl" aria-hidden="true"></div>
+        <div class="envelope-corner envelope-corner--br" aria-hidden="true"></div>
+
+        <div class="envelope-bk-header">
+          <div class="dual-logo-pill dual-logo-pill--cover">
+            <img
+              src="./assets/vnuhcm-logo.png"
+              alt="Logo Đại học Quốc gia TP. Hồ Chí Minh"
+              class="logo-vnu logo-vnu--cover"
+              data-bind-src="graduate.vnuLogoUrl"
+            />
+            <span class="dual-logo-sep" aria-hidden="true"></span>
+            <img
+              src="./assets/hcmut-logo.png"
+              alt="Logo Trường Đại học Bách Khoa TP.HCM"
+              class="logo-bk logo-bk--cover"
+              data-bind-src="graduate.schoolLogoUrl"
+            />
+          </div>
+          <p class="envelope-school" data-bind="graduate.university"></p>
+        </div>
+
+        <div class="envelope-hero-type">
+          <p class="envelope-kicker">THƯ MỜI</p>
+          <h2 class="envelope-big-title">Lễ Tốt Nghiệp</h2>
+          <div class="envelope-divider" aria-hidden="true">
+            <span class="envelope-divider-line"></span>
+            <span class="envelope-divider-diamond"></span>
+            <span class="envelope-divider-line"></span>
+          </div>
+          <div
+            class="periodic-name-row periodic-name-row--cover"
+            id="periodic-name-cover"
+            aria-label="Tên ghép theo Bảng tuần hoàn Hóa học"
+          ></div>
+          <p class="envelope-name" data-bind="graduate.fullName">
+            Lê Thị Hiền Anh
+          </p>
+          <p class="envelope-degree" data-bind="graduate.degreeTitle">
+            Tân Kỹ sư Kỹ thuật Hóa học – HCMUT
+          </p>
+        </div>
+
+        <p class="envelope-meta">
+          <span data-bind="event.dateDisplay">29 / 11 / 2026</span>
+          <span class="meta-dot">•</span>
+          <span data-bind="graduate.universityShort">HCMUT</span>
+        </p>
+
+        <div class="envelope-actions">
+          <button
+            type="button"
+            id="open-invitation-btn"
+            class="btn btn-gold envelope-btn"
+          >
+            <span>Mở Thiệp Mời</span>
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            id="open-silent-btn"
+            class="envelope-silent-link"
+          >
+            Mở thiệp không kèm nhạc
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Single Page Application -->
+    <div id="app-shell" class="app-shell">
+      <!-- Subtle Sticky Top Nav -->
+      <header class="top-nav" id="top-nav">
+        <div class="container top-nav-inner">
+          <a href="#hero" class="brand-mark" aria-label="Về đầu trang">
+            <img
+              src="./assets/hcmut-logo.png"
+              alt="Logo HCMUT"
+              class="logo-bk logo-bk--nav"
+              data-bind-src="graduate.schoolLogoUrl"
+            />
+            <span class="brand-text" data-bind="graduate.shortName">Hiền Anh</span>
+          </a>
+          <nav class="nav-links" aria-label="Điều hướng chính">
+            <a href="#details">Thông tin</a>
+            <a href="#gallery">Kỷ niệm</a>
+            <a href="#rsvp" class="nav-cta">Tham dự</a>
+          </nav>
+        </div>
+      </header>
+
+      <main>
+        <!-- 1. HERO SECTION -->
+        <section id="hero" class="hero-section">
+          <div class="container hero-inner">
+            <div class="hero-crest reveal">
+              <div class="dual-logo-pill dual-logo-pill--hero">
+                <img
+                  src="./assets/vnuhcm-logo.png"
+                  alt="Logo Đại học Quốc gia TP. Hồ Chí Minh"
+                  class="logo-vnu logo-vnu--hero"
+                  data-bind-src="graduate.vnuLogoUrl"
+                />
+                <span class="dual-logo-sep" aria-hidden="true"></span>
+                <img
+                  src="./assets/hcmut-logo.png"
+                  alt="Logo Trường Đại học Bách Khoa TP.HCM"
+                  class="logo-bk logo-bk--hero"
+                  data-bind-src="graduate.schoolLogoUrl"
+                />
+              </div>
+              <p class="hero-university-text" data-bind="graduate.university">
+                Trường Đại học Bách Khoa – ĐHQG TP.HCM
+              </p>
+            </div>
+
+            <p class="hero-eyebrow reveal" data-bind="graduate.headline">
+              Thư Mời Lễ Tốt Nghiệp
+            </p>
+
+            <!-- Periodic Table Name Crest -->
+            <div
+              class="periodic-name-row periodic-name-row--hero reveal"
+              id="periodic-name-hero"
+              aria-label="Tên Lê Thị Hiền Anh theo Bảng tuần hoàn Hóa học"
+            ></div>
+
+            <h1 class="hero-name reveal" data-bind="graduate.fullName">
+              Lê Thị Hiền Anh
+            </h1>
+
+            <div class="gold-divider reveal" aria-hidden="true">
+              <span class="gold-divider-line"></span>
+              <svg viewBox="0 0 24 24" width="16" height="16">
+                <polygon
+                  points="12,2 21,7 21,17 12,22 3,17 3,7"
+                  fill="none"
+                  stroke="#D4AF37"
+                  stroke-width="1.8"
+                />
+                <circle cx="12" cy="12" r="2.5" fill="#D4AF37" />
+              </svg>
+              <span class="gold-divider-line"></span>
+            </div>
+
+            <p class="hero-degree reveal" data-bind="graduate.degreeTitle">
+              Tân Kỹ sư Kỹ thuật Hóa học – HCMUT
+            </p>
+            <p class="hero-faculty-en reveal" data-bind="graduate.facultyEn">
+              Faculty of Chemical Engineering
+            </p>
+
+            <!-- Quick Date Pill -->
+            <div class="hero-date-strip reveal">
+              <div class="date-strip-item">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  aria-hidden="true"
+                >
+                  <rect x="3" y="4" width="18" height="18" rx="2" />
+                  <line x1="16" y1="2" x2="16" y2="6" />
+                  <line x1="8" y1="2" x2="8" y2="6" />
+                  <line x1="3" y1="10" x2="21" y2="10" />
+                </svg>
+                <span data-bind="event.dateText">Chủ Nhật, ngày 29/11/2026</span>
+              </div>
+              <span class="date-strip-sep" aria-hidden="true">•</span>
+              <div class="date-strip-item">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  aria-hidden="true"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <polyline points="12 6 12 12 16 14" />
+                </svg>
+                <span data-bind="event.timeRange">09:00 sáng – 12:00 trưa</span>
+              </div>
+            </div>
+
+            <!-- Countdown Timer -->
+            <div
+              class="countdown-wrapper reveal"
+              aria-label="Đồng hồ đếm ngược đến lễ tốt nghiệp"
+            >
+              <p class="countdown-label" id="countdown-status-label">
+                Đếm ngược đến khoảnh khắc tốt nghiệp
+              </p>
+              <div class="countdown-grid" id="countdown-grid">
+                <div class="countdown-card">
+                  <span class="countdown-value" id="cd-days">00</span>
+                  <span class="countdown-unit">Ngày</span>
+                </div>
+                <div class="countdown-card">
+                  <span class="countdown-value" id="cd-hours">00</span>
+                  <span class="countdown-unit">Giờ</span>
+                </div>
+                <div class="countdown-card">
+                  <span class="countdown-value" id="cd-minutes">00</span>
+                  <span class="countdown-unit">Phút</span>
+                </div>
+                <div class="countdown-card">
+                  <span class="countdown-value" id="cd-seconds">00</span>
+                  <span class="countdown-unit">Giây</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Hero CTAs -->
+            <div class="hero-actions reveal">
+              <a href="#rsvp" class="btn btn-primary">
+                <span>Xác nhận tham dự</span>
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  aria-hidden="true"
+                >
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                  <polyline points="22 4 12 14.01 9 11.01" />
+                </svg>
+              </a>
+              <a href="#details" class="btn btn-outline">
+                <span>Xem chi tiết</span>
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  aria-hidden="true"
+                >
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- PERSONAL INVITATION NOTE -->
+        <section class="note-section">
+          <div class="container">
+            <div class="note-card reveal">
+              <span class="note-quote-mark" aria-hidden="true">“</span>
+              <p class="note-text" data-bind="graduate.invitationNote"></p>
+              <div class="note-signature">
+                <span class="note-signature-line" aria-hidden="true"></span>
+                <span data-bind="graduate.fullName">Lê Thị Hiền Anh</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 2. EVENT DETAILS & TIMELINE -->
+        <section id="details" class="section details-section">
+          <div class="container">
+            <div class="section-header reveal">
+              <span class="section-kicker">THÔNG TIN BUỔI LỄ</span>
+              <h2 class="section-title">Thời gian & Địa điểm</h2>
+            </div>
+
+            <!-- Event Summary Card -->
+            <div class="event-card reveal">
+              <div class="event-card-accent" aria-hidden="true"></div>
+              <div class="event-info-grid">
+                <div class="event-info-item">
+                  <div class="info-icon-box" aria-hidden="true">
+                    <svg
+                      width="22"
+                      height="22"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                    >
+                      <rect x="3" y="4" width="18" height="18" rx="2" />
+                      <line x1="16" y1="2" x2="16" y2="6" />
+                      <line x1="8" y1="2" x2="8" y2="6" />
+                      <line x1="3" y1="10" x2="21" y2="10" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p class="info-label">Ngày tổ chức</p>
+                    <p class="info-value" data-bind="event.dateText">
+                      Chủ Nhật, ngày 29/11/2026
+                    </p>
+                  </div>
+                </div>
+
+                <div class="event-info-item">
+                  <div class="info-icon-box" aria-hidden="true">
+                    <svg
+                      width="22"
+                      height="22"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                    >
+                      <circle cx="12" cy="12" r="10" />
+                      <polyline points="12 6 12 12 16 14" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p class="info-label">Khung giờ</p>
+                    <p class="info-value" data-bind="event.timeRange">
+                      09:00 sáng – 12:00 trưa
+                    </p>
+                  </div>
+                </div>
+
+                <div class="event-info-item event-info-item--full">
+                  <div class="info-icon-box" aria-hidden="true">
+                    <svg
+                      width="22"
+                      height="22"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                    >
+                      <path
+                        d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"
+                      />
+                      <circle cx="12" cy="10" r="3" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p class="info-label">Địa điểm</p>
+                    <p class="info-value" data-bind="event.venueName">
+                      Tòa B2 – Khoa Kỹ thuật Hóa học
+                    </p>
+                    <p class="info-subvalue" data-bind="event.venueAddress">
+                      Cổng 1, 268 Lý Thường Kiệt, P.14, Q.10, TP.HCM
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Utility Button: Google Maps -->
+              <div class="event-actions">
+                <a
+                  id="google-maps-btn"
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn btn-primary btn-sm"
+                >
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    aria-hidden="true"
+                  >
+                    <polygon points="3 11 22 2 13 21 11 13 3 11" />
+                  </svg>
+                  <span>Mở Google Maps</span>
+                </a>
+              </div>
+
+              <!-- Parking Callout -->
+              <div class="parking-note">
+                <div class="parking-badge" aria-hidden="true">P</div>
+                <div>
+                  <p class="parking-title">Lưu ý gửi xe (Cổng Lý Thường Kiệt)</p>
+                  <p class="parking-desc" data-bind="event.parkingNote"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 3. PHOTO GALLERY -->
+        <section id="gallery" class="section gallery-section">
+          <div class="container">
+            <div class="section-header reveal">
+              <span class="section-kicker">KÝ ỨC THANH XUÂN</span>
+              <h2 class="section-title">Hành trình Bách Khoa</h2>
+              <p class="section-subtitle">
+                Một vài lát cắt đáng nhớ từ giảng đường, phòng thí nghiệm Hóa học
+                đến ngày tốt nghiệp.
+              </p>
+            </div>
+
+            <div class="gallery-grid" id="gallery-grid">
+              <!-- Hydrated from config.js -->
+            </div>
+          </div>
+        </section>
+
+        <!-- 4. RSVP & GUESTBOOK -->
+        <section id="rsvp" class="section rsvp-section">
+          <div class="container">
+            <div class="section-header reveal">
+              <span class="section-kicker">CHUNG VUI CÙNG HIỀN ANH</span>
+              <h2 class="section-title">Xác nhận tham dự & Sổ lưu bút</h2>
+              <p class="section-subtitle">
+                Để Hiền Anh có thể đón tiếp thật chu đáo, bạn vui lòng xác nhận
+                tham dự và gửi lại đôi lời chúc nhé.
+              </p>
+            </div>
+
+            <div class="rsvp-layout">
+              <!-- RSVP Form -->
+              <form id="rsvp-form" class="rsvp-card reveal" novalidate>
+                <div class="form-group">
+                  <label for="guest-name" class="form-label">
+                    Họ và tên <span class="required">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="guest-name"
+                    name="name"
+                    class="form-input"
+                    placeholder="Ví dụ: Nguyễn Minh Anh"
+                    required
+                    maxlength="80"
+                    autocomplete="name"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <span class="form-label">Mối quan hệ</span>
+                  <div
+                    class="pill-group"
+                    role="radiogroup"
+                    aria-label="Mối quan hệ"
+                  >
+                    <label class="pill-option">
+                      <input
+                        type="radio"
+                        name="relationship"
+                        value="Bạn bè"
+                        checked
+                      />
+                      <span>Bạn bè</span>
+                    </label>
+                    <label class="pill-option">
+                      <input type="radio" name="relationship" value="Gia đình" />
+                      <span>Gia đình</span>
+                    </label>
+                    <label class="pill-option">
+                      <input
+                        type="radio"
+                        name="relationship"
+                        value="Đồng nghiệp"
+                      />
+                      <span>Đồng nghiệp</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <span class="form-label">Trạng thái tham dự</span>
+                  <div
+                    class="attendance-group"
+                    role="radiogroup"
+                    aria-label="Trạng thái tham dự"
+                  >
+                    <label class="attendance-card">
+                      <input
+                        type="radio"
+                        name="attendance"
+                        value="attending"
+                        checked
+                      />
+                      <span class="attendance-content">
+                        <span class="attendance-icon" aria-hidden="true">🎓</span>
+                        <span class="attendance-text">
+                          <strong>Chắc chắn tham gia</strong>
+                          <small>Hẹn gặp tại Bách Khoa!</small>
+                        </span>
+                      </span>
+                    </label>
+
+                    <label class="attendance-card">
+                      <input
+                        type="radio"
+                        name="attendance"
+                        value="declined"
+                      />
+                      <span class="attendance-content">
+                        <span class="attendance-icon" aria-hidden="true">💐</span>
+                        <span class="attendance-text">
+                          <strong>Tiếc quá không đến được</strong>
+                          <small>Gửi lời chúc từ xa</small>
+                        </span>
+                      </span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="form-label-row">
+                    <label for="guest-message" class="form-label">
+                      Lời chúc gửi đến Tân Kỹ sư <span class="required">*</span>
+                    </label>
+                    <span class="char-counter" id="message-char-count">0 / 500</span>
+                  </div>
+                  <textarea
+                    id="guest-message"
+                    name="message"
+                    class="form-textarea"
+                    rows="4"
+                    placeholder="Viết vài lời chúc thật đáng yêu cho Hiền Anh nhân ngày tốt nghiệp..."
+                    required
+                    maxlength="500"
+                  ></textarea>
+                </div>
+
+                <p
+                  id="rsvp-error"
+                  class="form-error"
+                  role="alert"
+                  aria-live="polite"
+                ></p>
+
+                <div
+                  id="rsvp-success-banner"
+                  class="form-success-banner"
+                  role="status"
+                  aria-live="polite"
+                  hidden
+                ></div>
+
+                <button
+                  type="submit"
+                  id="rsvp-submit-btn"
+                  class="btn btn-primary btn-full"
+                >
+                  <span>Gửi xác nhận & Lời chúc</span>
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    aria-hidden="true"
+                  >
+                    <line x1="22" y1="2" x2="11" y2="13" />
+                    <polygon points="22 2 15 22 11 13 2 9 22 2" />
+                  </svg>
+                </button>
+              </form>
+
+              <!-- Guestbook List -->
+              <div class="guestbook-panel reveal" id="guestbook-panel">
+                <div class="guestbook-header">
+                  <div>
+                    <h3 class="guestbook-title">Sổ lưu bút</h3>
+                    <p class="guestbook-subtitle">
+                      Những lời chúc ấm áp từ gia đình & bạn bè
+                    </p>
+                  </div>
+                  <div class="guestbook-stats">
+                    <span class="stat-pill" id="stat-total">0 lời chúc</span>
+                    <span class="stat-pill stat-pill--gold" id="stat-attending">
+                      0 tham dự
+                    </span>
+                    <button
+                      type="button"
+                      id="guestbook-refresh-btn"
+                      class="refresh-pill"
+                      title="Tải lời chúc mới nhất"
+                      aria-label="Làm mới sổ lưu bút"
+                    >
+                      ↻
+                    </button>
+                  </div>
+                </div>
+
+                <div
+                  class="guestbook-filters"
+                  id="guestbook-filters"
+                  role="tablist"
+                  aria-label="Lọc lời chúc"
+                >
+                  <button type="button" class="filter-chip is-active" data-filter="all">
+                    Tất cả
+                  </button>
+                  <button type="button" class="filter-chip" data-filter="attending">
+                    Tham dự
+                  </button>
+                  <button type="button" class="filter-chip" data-filter="Bạn bè">
+                    Bạn bè
+                  </button>
+                  <button type="button" class="filter-chip" data-filter="Gia đình">
+                    Gia đình
+                  </button>
+                  <button type="button" class="filter-chip" data-filter="Đồng nghiệp">
+                    Đồng nghiệp
+                  </button>
+                </div>
+
+                <div
+                  class="guestbook-list"
+                  id="guestbook-list"
+                  aria-live="polite"
+                >
+                  <!-- Hydrated live from RsvpService -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- 5. FOOTER & QUICK CONTACT -->
+      <footer class="footer-section">
+        <div class="container footer-inner">
+          <div class="footer-crest">
+            <div class="dual-logo-pill dual-logo-pill--footer">
+              <img
+                src="./assets/vnuhcm-logo.png"
+                alt="Logo Đại học Quốc gia TP. Hồ Chí Minh"
+                class="logo-vnu logo-vnu--footer"
+                data-bind-src="graduate.vnuLogoUrl"
+              />
+              <span class="dual-logo-sep" aria-hidden="true"></span>
+              <img
+                src="./assets/hcmut-logo.png"
+                alt="Logo Trường Đại học Bách Khoa TP.HCM"
+                class="logo-bk logo-bk--footer"
+                data-bind-src="graduate.schoolLogoUrl"
+              />
+            </div>
+          </div>
+          <h2 class="footer-title">Trân trọng cảm ơn!</h2>
+          <p class="footer-subtitle">
+            Rất hân hạnh được đón tiếp bạn tại Lễ Tốt Nghiệp của
+            <strong data-bind="graduate.fullName">Lê Thị Hiền Anh</strong>.
+          </p>
+
+          <div class="contact-actions">
+            <a id="contact-phone-btn" href="#" class="contact-btn contact-btn--call">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                aria-hidden="true"
+              >
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+                />
+              </svg>
+              <span data-bind="contact.phoneDisplay">0886 691 104</span>
+            </a>
+
+            <a
+              id="contact-zalo-btn"
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="contact-btn"
+            >
+              <span class="zalo-badge" aria-hidden="true">Zalo</span>
+              <span>Nhắn Zalo</span>
+            </a>
+
+            <a
+              id="contact-fb-btn"
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="contact-btn"
+            >
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+                />
+              </svg>
+              <span>Facebook</span>
+            </a>
+          </div>
+
+          <div class="footer-meta">
+            <p>
+              <span data-bind="graduate.faculty">Khoa Kỹ thuật Hóa học</span> ·
+              <span data-bind="graduate.university">
+                Trường Đại học Bách Khoa – ĐHQG TP.HCM
+              </span>
+            </p>
+            <p class="footer-year">Class of 2026 · Chemical Engineering</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Gallery Lightbox Modal -->
+    <div
+      id="lightbox"
+      class="lightbox"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Xem ảnh kỷ niệm"
+      hidden
+    >
+      <button
+        type="button"
+        class="lightbox-close"
+        id="lightbox-close"
+        aria-label="Đóng ảnh"
+      >
+        ✕
+      </button>
+      <button
+        type="button"
+        class="lightbox-nav lightbox-prev"
+        id="lightbox-prev"
+        aria-label="Ảnh trước"
+      >
+        ‹
+      </button>
+      <figure class="lightbox-figure">
+        <img id="lightbox-img" src="" alt="" />
+        <figcaption class="lightbox-caption">
+          <span class="lightbox-tag" id="lightbox-tag"></span>
+          <p id="lightbox-text"></p>
+        </figcaption>
+      </figure>
+      <button
+        type="button"
+        class="lightbox-nav lightbox-next"
+        id="lightbox-next"
+        aria-label="Ảnh tiếp theo"
+      >
+        ›
+      </button>
+    </div>
+
+    <!-- Floating Background Music Toggle -->
+    <button
+      type="button"
+      id="music-toggle"
+      class="music-fab"
+      aria-pressed="false"
+      aria-label="Bật hoặc tắt nhạc nền"
+      title="Bật/tắt nhạc nền"
+    >
+      <span class="music-bars" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+      <span class="music-label" id="music-label">Nhạc nền</span>
+    </button>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <!-- Scripts -->
+    <script src="./config.js"></script>
+    <script src="./js/molecules.js"></script>
+    <script src="./js/confetti.js"></script>
+    <script src="./js/music.js"></script>
+    <script src="./js/rsvp-service.js"></script>
+    <script src="./js/app.js"></script>
+  </body>
+</html>

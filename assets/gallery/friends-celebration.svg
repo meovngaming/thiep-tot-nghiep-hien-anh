@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 460" width="600" height="460">
+  <defs>
+    <linearGradient id="sky5" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1488DB"/>
+      <stop offset="55%" stop-color="#62B6F2"/>
+      <stop offset="100%" stop-color="#E7F4FD"/>
+    </linearGradient>
+    <linearGradient id="gold5" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FAEA9E"/>
+      <stop offset="100%" stop-color="#D4AF37"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="460" fill="url(#sky5)"/>
+  <!-- Sun flare -->
+  <circle cx="300" cy="360" r="180" fill="#FFF8DC" opacity="0.35"/>
+  <!-- Tossed Graduation Caps in the Air -->
+  <g transform="translate(155, 130) rotate(-18)">
+    <polygon points="0,-24 58,0 0,24 -58,0" fill="#032B91" stroke="#F3E2A2" stroke-width="2"/>
+    <path d="M-30,12 L-30,30 C-30,38 30,38 30,30 L30,12" fill="#021C61"/>
+    <line x1="0" y1="0" x2="46" y2="34" stroke="url(#gold5)" stroke-width="3"/>
+  </g>
+  <g transform="translate(315, 86) rotate(10)">
+    <polygon points="0,-28 68,0 0,28 -68,0" fill="#032B91" stroke="#F3E2A2" stroke-width="2"/>
+    <path d="M-36,14 L-36,34 C-36,44 36,44 36,34 L36,14" fill="#021C61"/>
+    <line x1="0" y1="0" x2="52" y2="40" stroke="url(#gold5)" stroke-width="3.5"/>
+  </g>
+  <g transform="translate(465, 152) rotate(22)">
+    <polygon points="0,-22 52,0 0,22 -52,0" fill="#032B91" stroke="#F3E2A2" stroke-width="2"/>
+    <path d="M-26,10 L-26,26 C-26,34 26,34 26,26 L26,10" fill="#021C61"/>
+    <line x1="0" y1="0" x2="-40" y2="32" stroke="url(#gold5)" stroke-width="3"/>
+  </g>
+  <!-- Confetti sparkles -->
+  <g fill="url(#gold5)">
+    <circle cx="95" cy="90" r="5"/>
+    <circle cx="240" cy="180" r="4"/>
+    <circle cx="400" cy="115" r="5"/>
+    <circle cx="520" cy="95" r="4"/>
+    <rect x="195" y="65" width="10" height="5" rx="2" transform="rotate(30 195 65)" fill="#FFFFFF"/>
+    <rect x="385" y="205" width="10" height="5" rx="2" transform="rotate(-25 385 205)" fill="#FFFFFF"/>
+  </g>
+  <!-- Celebratory Silhouette Wave -->
+  <path d="M0,370 Q150,320 300,355 T600,340 L600,460 L0,460 Z" fill="#032B91" opacity="0.92"/>
+  <text x="42" y="408" font-family="Georgia, serif" font-size="25" font-weight="600" fill="#FFFFFF">Thanh Xuân Bách Khoa</text>
+  <text x="42" y="436" font-family="sans-serif" font-size="13" letter-spacing="2.5" fill="#F3E2A2">FRIENDS &amp; MEMORIES FOREVER</text>
+</svg>

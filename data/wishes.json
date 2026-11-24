@@ -1,0 +1,29 @@
+[
+    {
+        "id":  "wish-1795458696900-u9ia8",
+        "name":  "Trần Huỳnh Trọng Đài",
+        "relationship":  "Bạn bè",
+        "attendance":  "attending",
+        "message":  "Chúc hiền anh học tốt!",
+        "likes":  1,
+        "createdAt":  "2026-11-23T18:31:36.900Z"
+    },
+    {
+        "id":  "seed-1",
+        "name":  "Gia đình nhỏ",
+        "relationship":  "Gia đình",
+        "createdAt":  "2026-11-22T08:30:00+07:00",
+        "attendance":  "attending",
+        "likes":  3,
+        "message":  "Chúc mừng con gái yêu đã hoàn thành xuất sắc chặng đường đại học tại Bách Khoa! Cả nhà rất tự hào về Tân Kỹ sư Hiền Anh."
+    },
+    {
+        "id":  "seed-2",
+        "name":  "Hội bạn thân Lab Hóa",
+        "relationship":  "Bạn bè",
+        "createdAt":  "2026-11-23T14:15:00+07:00",
+        "attendance":  "attending",
+        "likes":  3,
+        "message":  "Nhất định có mặt từ 9h sáng ở Tòa B2 để chụp 1001 tấm ảnh! Chúc Hiền Anh luôn tỏa sáng trên con đường phía trước nhé!"
+    }
+]
