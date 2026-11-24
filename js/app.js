@@ -50,11 +50,12 @@
       fbBtn.href = cfg.contact.facebookUrl;
     }
 
-    renderPeriodicName("periodic-name-cover", true);
     renderPeriodicName("periodic-name-hero", false);
   }
 
-  function renderPeriodicName(containerId, isCompact) {
+  let openElementModalAt = null;
+
+  function renderPeriodicName(containerId) {
     const container = document.getElementById(containerId);
     const tiles =
       cfg.graduate && Array.isArray(cfg.graduate.periodicTiles)
@@ -63,12 +64,17 @@
     if (!container || tiles.length === 0) return;
 
     container.innerHTML = "";
-    tiles.forEach((tile) => {
-      const box = document.createElement("div");
-      box.className =
-        "pt-tile pt-tile--" +
-        (tile.accent || "navy") +
-        (isCompact ? " pt-tile--compact" : "");
+    tiles.forEach((tile, index) => {
+      const box = document.createElement("button");
+      box.type = "button";
+      box.className = "pt-tile pt-tile--" + (tile.accent || "navy");
+      box.setAttribute(
+        "aria-label",
+        "Xem giải mã nguyên tố " +
+          (tile.symbol || "") +
+          " – " +
+          (tile.realElement || tile.elementName || "")
+      );
 
       const topRow = document.createElement("div");
       topRow.className = "pt-top";
@@ -92,7 +98,127 @@
       name.textContent = tile.elementName || "";
 
       box.append(topRow, sym, name);
+      box.addEventListener("click", () => {
+        if (typeof openElementModalAt === "function") {
+          openElementModalAt(index);
+        }
+      });
       container.appendChild(box);
+    });
+  }
+
+  function initElementModal() {
+    const modal = document.getElementById("element-modal");
+    const closeBtn = document.getElementById("em-close");
+    const tabsEl = document.getElementById("em-tabs");
+    const specimenEl = document.getElementById("em-specimen");
+    const numEl = document.getElementById("em-num");
+    const massEl = document.getElementById("em-mass");
+    const symEl = document.getElementById("em-sym");
+    const elemEl = document.getElementById("em-elem");
+    const catEl = document.getElementById("em-category");
+    const titleEl = document.getElementById("em-title");
+    const configEl = document.getElementById("em-config");
+    const chemTextEl = document.getElementById("em-chem-text");
+    const personHeadingEl = document.getElementById("em-person-heading");
+    const personTextEl = document.getElementById("em-person-text");
+    const prevBtn = document.getElementById("em-prev-btn");
+    const nextBtn = document.getElementById("em-next-btn");
+
+    const tiles =
+      cfg.graduate && Array.isArray(cfg.graduate.periodicTiles)
+        ? cfg.graduate.periodicTiles
+        : [];
+    if (!modal || tiles.length === 0) return;
+
+    let activeIdx = 0;
+
+    // Build quick switcher tabs
+    if (tabsEl) {
+      tabsEl.innerHTML = "";
+      tiles.forEach((t, idx) => {
+        const tab = document.createElement("button");
+        tab.type = "button";
+        tab.className = "em-tab";
+        tab.setAttribute("role", "tab");
+        tab.innerHTML =
+          '<span class="em-tab-num">' +
+          (t.atomicNumber || "") +
+          "</span><strong>" +
+          (t.symbol || "") +
+          "</strong>";
+        tab.addEventListener("click", () => showElement(idx));
+        tabsEl.appendChild(tab);
+      });
+    }
+
+    function showElement(idx) {
+      activeIdx = (idx + tiles.length) % tiles.length;
+      const item = tiles[activeIdx];
+
+      if (specimenEl) {
+        specimenEl.className =
+          "em-specimen em-specimen--" + (item.accent || "navy");
+      }
+      if (numEl) numEl.textContent = item.atomicNumber || "";
+      if (massEl) massEl.textContent = item.mass || "";
+      if (symEl) symEl.textContent = item.symbol || "";
+      if (elemEl) elemEl.textContent = item.elementName || "";
+      if (catEl) catEl.textContent = item.category || "";
+      if (titleEl) {
+        titleEl.textContent =
+          (item.symbol || "") +
+          " — " +
+          (item.realElement || item.elementName || "");
+      }
+      if (configEl) configEl.textContent = item.electronConfig || "";
+      if (chemTextEl) chemTextEl.textContent = item.chemicalProperty || "";
+      if (personHeadingEl) {
+        personHeadingEl.textContent =
+          'Giải mã mảnh ghép "' +
+          (item.symbol || "") +
+          '" của ' +
+          (cfg.graduate.shortName || "Hiền Anh");
+      }
+      if (personTextEl) personTextEl.textContent = item.personalityTrait || "";
+
+      if (tabsEl) {
+        tabsEl.querySelectorAll(".em-tab").forEach((btn, i) => {
+          const isCurrent = i === activeIdx;
+          btn.classList.toggle("is-active", isCurrent);
+          btn.setAttribute("aria-selected", String(isCurrent));
+        });
+      }
+    }
+
+    openElementModalAt = function (idx) {
+      showElement(idx);
+      modal.hidden = false;
+      document.body.style.overflow = "hidden";
+    };
+
+    function closeModal() {
+      modal.hidden = true;
+      document.body.style.overflow = "";
+    }
+
+    if (closeBtn) closeBtn.addEventListener("click", closeModal);
+    if (prevBtn) {
+      prevBtn.addEventListener("click", () => showElement(activeIdx - 1));
+    }
+    if (nextBtn) {
+      nextBtn.addEventListener("click", () => showElement(activeIdx + 1));
+    }
+
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (modal.hidden) return;
+      if (e.key === "Escape") closeModal();
+      if (e.key === "ArrowLeft") showElement(activeIdx - 1);
+      if (e.key === "ArrowRight") showElement(activeIdx + 1);
     });
   }
 
@@ -601,18 +727,26 @@
     const musicBtn = document.getElementById("music-toggle");
     const musicLabel = document.getElementById("music-label");
     if (musicBtn && window.MusicController) {
+      const songTitle =
+        (cfg.music && cfg.music.title) || "Nụ Cười 18 20";
       const syncUi = (playing) => {
         musicBtn.classList.toggle("is-playing", playing);
         musicBtn.setAttribute("aria-pressed", String(playing));
         if (musicLabel) {
-          musicLabel.textContent = playing ? "Đang phát" : "Nhạc nền";
+          musicLabel.textContent = playing
+            ? "♫ " + songTitle
+            : songTitle;
         }
       };
 
       window.MusicController.onChange(syncUi);
       musicBtn.addEventListener("click", () => {
         const nowPlaying = window.MusicController.toggle();
-        showToast(nowPlaying ? "Đã bật nhạc nền nhẹ nhàng" : "Đã tắt nhạc nền");
+        showToast(
+          nowPlaying
+            ? "Đang phát: " + songTitle
+            : "Đã tạm dừng nhạc nền"
+        );
       });
     }
 
@@ -665,6 +799,7 @@
    * Boot Application
    * ------------------------------------------------------------------------ */
   hydrateBindings();
+  initElementModal();
   initGallery();
   initCountdown();
   initRsvp();

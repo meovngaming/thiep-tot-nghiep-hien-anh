@@ -84,11 +84,6 @@
             <span class="envelope-divider-diamond"></span>
             <span class="envelope-divider-line"></span>
           </div>
-          <div
-            class="periodic-name-row periodic-name-row--cover"
-            id="periodic-name-cover"
-            aria-label="Tên ghép theo Bảng tuần hoàn Hóa học"
-          ></div>
           <p class="envelope-name" data-bind="graduate.fullName">
             Lê Thị Hiền Anh
           </p>
@@ -187,16 +182,17 @@
               Thư Mời Lễ Tốt Nghiệp
             </p>
 
-            <!-- Periodic Table Name Crest -->
+            <!-- Periodic Table Name Centerpiece (Clickable Element Tiles) -->
+            <h1 class="sr-only" data-bind="graduate.fullName">Lê Thị Hiền Anh</h1>
             <div
               class="periodic-name-row periodic-name-row--hero reveal"
               id="periodic-name-hero"
-              aria-label="Tên Lê Thị Hiền Anh theo Bảng tuần hoàn Hóa học"
+              role="group"
+              aria-label="Tên Lê Thị Hiền Anh theo Bảng tuần hoàn Hóa học – Chạm vào từng ô để xem chi tiết"
             ></div>
-
-            <h1 class="hero-name reveal" data-bind="graduate.fullName">
-              Lê Thị Hiền Anh
-            </h1>
+            <p class="periodic-hint reveal" data-bind="graduate.periodicHint">
+              ✨ Chạm vào từng nguyên tố để giải mã tính cách Tân Kỹ sư
+            </p>
 
             <div class="gold-divider reveal" aria-hidden="true">
               <span class="gold-divider-line"></span>
@@ -781,6 +777,91 @@
       </footer>
     </div>
 
+    <!-- Periodic Element & Personality Popup Modal -->
+    <div
+      id="element-modal"
+      class="element-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="em-title"
+      hidden
+    >
+      <div class="element-modal-card">
+        <button
+          type="button"
+          class="element-modal-close"
+          id="em-close"
+          aria-label="Đóng bảng giải mã nguyên tố"
+        >
+          ✕
+        </button>
+
+        <!-- Quick Switcher Tabs for the 4 Elements -->
+        <div
+          class="element-modal-tabs"
+          id="em-tabs"
+          role="tablist"
+          aria-label="Chọn nguyên tố trong tên Lê Thị Hiền Anh"
+        ></div>
+
+        <!-- Enlarged Element Specimen Header -->
+        <div class="element-modal-hero">
+          <div class="em-specimen" id="em-specimen">
+            <div class="em-specimen-top">
+              <span id="em-num">29</span>
+              <span id="em-mass">6.94</span>
+            </div>
+            <div class="em-specimen-sym" id="em-sym">Lê</div>
+            <div class="em-specimen-name" id="em-elem">Lithium</div>
+          </div>
+
+          <div class="em-meta">
+            <span class="em-category" id="em-category"></span>
+            <h3 class="em-title" id="em-title"></h3>
+            <p class="em-config">
+              Cấu hình electron: <code id="em-config"></code>
+            </p>
+          </div>
+        </div>
+
+        <!-- Chemical Property & Personality Connection -->
+        <div class="em-sections">
+          <div class="em-box em-box--chem">
+            <div class="em-box-header">
+              <span class="em-box-icon" aria-hidden="true">⚗️</span>
+              <h4>Tính chất Hóa học</h4>
+            </div>
+            <p id="em-chem-text"></p>
+          </div>
+
+          <div class="em-box em-box--person">
+            <div class="em-box-header">
+              <span class="em-box-icon" aria-hidden="true">✨</span>
+              <h4 id="em-person-heading">Liên hệ tính cách</h4>
+            </div>
+            <p id="em-person-text"></p>
+          </div>
+        </div>
+
+        <div class="element-modal-footer">
+          <button
+            type="button"
+            class="btn btn-outline btn-sm"
+            id="em-prev-btn"
+          >
+            ← Nguyên tố trước
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary btn-sm"
+            id="em-next-btn"
+          >
+            Nguyên tố tiếp →
+          </button>
+        </div>
+      </div>
+    </div>
+
     <!-- Gallery Lightbox Modal -->
     <div
       id="lightbox"
@@ -837,7 +918,7 @@
         <span></span>
         <span></span>
       </span>
-      <span class="music-label" id="music-label">Nhạc nền</span>
+      <span class="music-label" id="music-label">Nụ Cười 18 20</span>
     </button>
 
     <!-- Toast Notification -->

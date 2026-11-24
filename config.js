@@ -13,35 +13,64 @@ window.INVITATION_CONFIG = {
     fullName: "Lê Thị Hiền Anh",
     shortName: "Hiền Anh",
     monogram: "HA",
-    // Bảng tuần hoàn ghép tên nhân vật chính (Periodic Table Name Tiles)
+    // Bảng tuần hoàn ghép tên nhân vật chính (Click vào từng ô sẽ mở Popup giải mã)
+    periodicHint: "✨ Chạm vào từng nguyên tố nhé!",
     periodicTiles: [
       {
         atomicNumber: "29",
         mass: "6.94",
         symbol: "Lê",
         elementName: "Lithium",
+        realElement: "Lithium (Li)",
+        electronConfig: "[He] 2s¹",
+        category: "Kim loại kiềm · Nguồn năng lượng bền bỉ",
         accent: "navy",
+        chemicalProperty:
+          "Lithium là kim loại nhẹ nhất trong Bảng tuần hoàn nhưng sở hữu mật độ tích trữ năng lượng cực cao — là 'trái tim' của các viên pin hiện đại và luôn cháy với ngọn lửa đỏ hồng rực rỡ.",
+        personalityTrait:
+          "Giống như Lithium nhỏ nhắn mà tràn đầy năng lượng, Hiền Anh luôn mang nguồn năng lượng tích cực, bền bỉ vượt qua hàng trăm giờ thí nghiệm và những mùa đồ án căng thẳng tại Bách Khoa mà chưa bao giờ 'cạn pin'.",
       },
       {
         atomicNumber: "90",
         mass: "232.0",
         symbol: "Thị",
         elementName: "Thorium",
+        realElement: "Thorium (Th)",
+        electronConfig: "[Rn] 6d² 7s²",
+        category: "Họ Actini · Nội lực mạnh mẽ & Bền nhiệt",
         accent: "cyan",
+        chemicalProperty:
+          "Đặt theo tên thần Sấm Thor, Thorium có điểm nóng chảy cực cao (1750°C), khó bị oxy hóa và ẩn chứa nguồn năng lượng khổng lồ bên trong vẻ ngoài ánh bạc điềm tĩnh.",
+        personalityTrait:
+          "Nhìn vẻ ngoài dịu dàng, điềm đạm nhưng bên trong là tinh thần 'chịu nhiệt' siêu hạng của dân Kỹ thuật Hóa học — càng gặp áp lực deadline hay phản ứng khó nhằn lại càng bản lĩnh và vững vàng.",
       },
       {
         atomicNumber: "01",
         mass: "1.008",
         symbol: "Hiền",
         elementName: "Hydrogen",
+        realElement: "Hydrogen (H)",
+        electronConfig: "1s¹",
+        category: "Nguyên tố khởi nguồn · Cầu nối liên kết",
         accent: "gold",
+        chemicalProperty:
+          "Là nguyên tố đầu tiên và phổ biến nhất vũ trụ, Hydrogen tạo nên cầu nối 'liên kết hydro' bền chặt trong phân tử nước (H₂O) và hầu hết các hợp chất hữu cơ của sự sống.",
+        personalityTrait:
+          "Đúng như tên gọi 'Hiền', luôn ấm áp, chân thành và là 'liên kết hydro' gắn kết gia đình, thầy cô cùng hội bạn thân Lab Hóa Bách Khoa suốt những năm tháng thanh xuân tươi đẹp.",
       },
       {
         atomicNumber: "79",
         mass: "197.0",
         symbol: "Anh",
         elementName: "Aurum",
+        realElement: "Aurum – Vàng (Au)",
+        electronConfig: "[Xe] 4f¹⁴ 5d¹⁰ 6s¹",
+        category: "Kim loại quý · Tinh khiết & Tỏa sáng",
         accent: "navy",
+        chemicalProperty:
+          "Aurum (Vàng) là kim loại quý hiếm, không bị oxy hóa hay phai màu theo thời gian, dẫn nhiệt – dẫn điện xuất sắc và giữ nguyên vẻ lấp lánh sau mọi quá trình tinh luyện.",
+        personalityTrait:
+          "'Lửa thử vàng, gian nan thử sức' — những năm tháng rèn giũa tại Khoa Kỹ thuật Hóa học HCMUT chính là quá trình tinh luyện để hôm nay Tân Kỹ sư Hiền Anh tự tin tỏa sáng rực rỡ trên hành trình mới.",
       },
     ],
     headline: "Thư Mời Lễ Tốt Nghiệp",
@@ -132,13 +161,14 @@ window.INVITATION_CONFIG = {
     facebookHandle: "fb.com/hienanh911",
   },
 
-  // 6. NHẠC NỀN
-  // Để trống `mp3Url: ""` để dùng giai điệu piano nhẹ nhàng tích hợp sẵn (không cần mạng).
-  // Hoặc thêm file nhạc vào thư mục assets và điền ví dụ: "./assets/music/graduation-piano.mp3"
+  // 5. NHẠC NỀN ("Nụ Cười 18 20 – Doãn Hiếu")
+  // Mặc định tích hợp sẵn giai điệu Piano Ballad "Nụ Cười 18 20" chạy trực tiếp không cần file ngoài.
+  // Nếu bạn muốn phát bản MP3 có lời hát, chỉ cần chép file vào `assets/music/nu-cuoi-18-20.mp3`
+  // rồi điền `mp3Url: "./assets/music/nu-cuoi-18-20.mp3"`.
   music: {
-    mp3Url: "",
-    volume: 0.35,
-    title: "Giai điệu tốt nghiệp",
+    mp3Url: "./assets/music/nu-cuoi-18-20.mp3",
+    volume: 0.42,
+    title: "Nụ Cười 18 20",
   },
 
   // 6. CẤU HÌNH SỔ LƯU BÚT & XÁC NHẬN THAM DỰ (RSVP)

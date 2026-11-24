@@ -4,22 +4,23 @@
    ========================================================================== */
 
 /*
- * 3 Bộ Font Việt hóa gốc trong `assets/fonts/`:
- * - SVN-Splandor : Display Serif cổ điển uốn lượn cho tiêu đề lớn ("Lễ Tốt Nghiệp", các mục chính)
- * - SVN-Waliglona: Calligraphy mềm mại, rõ nét cho tên nhân vật chính ("Lê Thị Hiền Anh")
- * - SVN-Heavenly : Nét chữ ký mảnh mai, tinh tế cho chữ ký cuối Lời ngỏ
+ * Bộ Font Việt hóa gốc trong `assets/fonts/`:
+ * - DFVN Indulge Script : Calligraphy thanh thoát, gọn trên 1 dòng cho tên "Lê Thị Hiền Anh" ngoài bìa
+ * - SVN-Splandor        : Display Serif cổ điển uốn lượn cho tiêu đề lớn ("Lễ Tốt Nghiệp", các mục chính)
+ * - SVN-Heavenly        : Nét chữ ký mảnh mai, tinh tế cho chữ ký cuối Lời ngỏ
  */
 @font-face {
-  font-family: "SVN-Splandor";
-  src: url("../assets/fonts/SVN-Splandor/SVN-Splandor.otf") format("opentype");
+  font-family: "DFVN Indulge Script";
+  src: url("../assets/fonts/OpenType-PS/DFVN%20Indulge%20Script.otf")
+    format("opentype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "SVN-Waliglona";
-  src: url("../assets/fonts/SVN-Waliglona/SVN-Waliglona.otf") format("opentype");
+  font-family: "SVN-Splandor";
+  src: url("../assets/fonts/SVN-Splandor/SVN-Splandor.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -55,8 +56,8 @@
   --radius-md: 18px;
   --radius-lg: 26px;
   --font-display: "SVN-Splandor", "Yeseva One", Georgia, serif;
-  --font-script: "SVN-Waliglona", "Prata", Georgia, serif;
-  --font-signature: "SVN-Heavenly", "SVN-Waliglona", Georgia, serif;
+  --font-script: "DFVN Indulge Script", "Prata", Georgia, serif;
+  --font-signature: "SVN-Heavenly", "DFVN Indulge Script", Georgia, serif;
   --font-serif: "Baskerville Display PT", "Prata", "Brygada 1918", Georgia,
     serif;
   --font-sans: "Be Vietnam Pro", -apple-system, BlinkMacSystemFont, "Segoe UI",
@@ -399,38 +400,44 @@ textarea {
 }
 
 .envelope-name {
-  margin: 0 0 6px;
-  padding: 2px 4px;
-  font-family: var(--font-serif);
-  font-size: clamp(23px, 6.2vw, 32px);
+  margin: 4px 0 10px;
+  padding: 6px 10px;
+  font-family: var(--font-script);
+  font-size: clamp(44px, 11.5vw, 58px);
   font-weight: 400;
-  line-height: 1.25;
-  letter-spacing: 0.03em;
+  line-height: 1.24;
+  letter-spacing: 0.01em;
   color: var(--white);
   white-space: nowrap;
-  text-shadow: 0 4px 18px rgba(0, 10, 42, 0.28);
+  text-shadow: 0 4px 20px rgba(212, 175, 55, 0.25);
 }
 
 /* ==========================================================================
    PERIODIC TABLE NAME TILES ([29 Lê] [90 Thị] [01 Hiền] [79 Anh])
    ========================================================================== */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .periodic-name-row {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 8px;
+  gap: 10px;
   width: 100%;
   margin: 0 auto;
 }
 
-.periodic-name-row--cover {
-  max-width: 310px;
-  margin: 10px auto 12px;
-  gap: 7px;
-}
-
 .periodic-name-row--hero {
-  max-width: 410px;
-  margin: 10px auto 14px;
+  max-width: 500px;
+  margin: 14px auto 10px;
   gap: 10px;
 }
 
@@ -439,46 +446,47 @@ textarea {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 7px 7px 6px;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.94);
-  border: 1.5px solid rgba(3, 43, 145, 0.22);
-  box-shadow: 0 6px 18px rgba(3, 43, 145, 0.08);
+  padding: 10px 8px 9px;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1.8px solid rgba(3, 43, 145, 0.24);
+  box-shadow: 0 10px 26px rgba(3, 43, 145, 0.1);
   text-align: center;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
   transition: transform 0.25s var(--ease-out), box-shadow 0.25s var(--ease-out),
     border-color 0.25s ease;
 }
 
-.pt-tile:hover {
-  transform: translateY(-3px) scale(1.03);
+.pt-tile:hover,
+.pt-tile:focus-visible {
+  outline: none;
+  transform: translateY(-4px) scale(1.03);
   border-color: var(--gold);
-  box-shadow: 0 12px 26px rgba(212, 175, 55, 0.24);
+  box-shadow: 0 16px 32px rgba(212, 175, 55, 0.28);
+}
+
+.pt-tile:active {
+  transform: scale(0.97);
 }
 
 .pt-tile--cyan {
-  border-color: rgba(20, 136, 219, 0.38);
-  background: linear-gradient(160deg, #ffffff 0%, #eef7ff 100%);
+  border-color: rgba(20, 136, 219, 0.42);
+  background: linear-gradient(160deg, #ffffff 0%, #ecf6ff 100%);
 }
 
 .pt-tile--gold {
-  border-color: rgba(212, 175, 55, 0.55);
-  background: linear-gradient(160deg, #ffffff 0%, #fff9e6 100%);
-}
-
-.pt-tile--compact {
-  padding: 5px 5px 4px;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.11);
-  border: 1px solid rgba(212, 175, 55, 0.48);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14);
+  border-color: rgba(212, 175, 55, 0.65);
+  background: linear-gradient(160deg, #ffffff 0%, #fff8e1 100%);
 }
 
 .pt-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
   font-family: var(--font-sans);
-  font-size: 9.5px;
+  font-size: 11px;
   font-weight: 700;
   line-height: 1;
   color: var(--cyan);
@@ -488,25 +496,15 @@ textarea {
 .pt-mass {
   font-weight: 500;
   color: var(--ink-muted);
-  font-size: 8.5px;
-}
-
-.pt-tile--compact .pt-top {
-  color: var(--gold-light);
-  font-size: 8.5px;
-}
-
-.pt-tile--compact .pt-mass {
-  color: rgba(255, 255, 255, 0.65);
-  font-size: 7.5px;
+  font-size: 9.5px;
 }
 
 .pt-symbol {
-  margin: 3px 0 2px;
+  margin: 7px 0 5px;
   font-family: var(--font-serif);
-  font-size: clamp(19px, 5vw, 25px);
+  font-size: clamp(24px, 6.8vw, 36px);
   font-weight: 600;
-  line-height: 1.1;
+  line-height: 1.08;
   color: var(--navy);
   letter-spacing: -0.01em;
 }
@@ -515,25 +513,297 @@ textarea {
   color: #8f6b0c;
 }
 
-.pt-tile--compact .pt-symbol {
-  font-size: clamp(16px, 4.4vw, 20px);
-  color: var(--white);
-}
-
 .pt-name {
   font-family: var(--font-sans);
-  font-size: 8.5px;
+  font-size: 10px;
   font-weight: 600;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.03em;
   color: var(--ink-muted);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.pt-tile--compact .pt-name {
-  font-size: 7.5px;
-  color: rgba(243, 226, 162, 0.85);
+.periodic-hint {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin: 4px auto 4px;
+  padding: 5px 14px;
+  border-radius: 999px;
+  background: rgba(255, 249, 230, 0.92);
+  border: 1px dashed rgba(212, 175, 55, 0.65);
+  font-size: 12px;
+  font-weight: 600;
+  color: #7c5c08;
+}
+
+/* ==========================================================================
+   ELEMENT & PERSONALITY POPUP MODAL (#element-modal)
+   ========================================================================== */
+.element-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 95;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  background: rgba(2, 18, 62, 0.76);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  animation: modalFadeIn 0.25s var(--ease-out);
+}
+
+.element-modal[hidden] {
+  display: none;
+}
+
+.element-modal-card {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  max-height: calc(100dvh - 36px);
+  overflow-y: auto;
+  padding: 22px 20px 20px;
+  border-radius: var(--radius-lg);
+  background: var(--white);
+  border: 1.5px solid var(--border-gold);
+  box-shadow: 0 28px 70px rgba(0, 10, 42, 0.45);
+  text-align: left;
+  animation: wishPopIn 0.32s var(--ease-out);
+}
+
+.element-modal-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--ink-muted);
+  font-size: 15px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.element-modal-close:hover {
+  background: var(--navy-soft);
+  color: var(--navy);
+}
+
+.element-modal-tabs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  margin-right: 42px;
+  margin-bottom: 18px;
+}
+
+.em-tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 6px 6px;
+  border-radius: 10px;
+  border: 1px solid rgba(3, 43, 145, 0.15);
+  background: var(--surface);
+  color: var(--ink-muted);
+  font-size: 12.5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.em-tab-num {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--cyan);
+}
+
+.em-tab.is-active {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: var(--white);
+  box-shadow: 0 6px 16px rgba(3, 43, 145, 0.22);
+}
+
+.em-tab.is-active .em-tab-num {
+  color: var(--gold-light);
+}
+
+.element-modal-hero {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, #f4f8ff 0%, #fdfaf0 100%);
+  border: 1px solid rgba(3, 43, 145, 0.1);
+  margin-bottom: 16px;
+}
+
+.em-specimen {
+  width: 86px;
+  height: 92px;
+  padding: 8px 8px 7px;
+  border-radius: 14px;
+  background: var(--white);
+  border: 2px solid var(--navy);
+  box-shadow: 0 8px 20px rgba(3, 43, 145, 0.12);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.em-specimen--cyan {
+  border-color: var(--cyan);
+}
+
+.em-specimen--gold {
+  border-color: var(--gold);
+  background: linear-gradient(160deg, #ffffff 0%, #fff8e1 100%);
+}
+
+.em-specimen-top {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--cyan);
+  line-height: 1;
+}
+
+.em-specimen-sym {
+  font-family: var(--font-serif);
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.05;
+  color: var(--navy);
+}
+
+.em-specimen--gold .em-specimen-sym {
+  color: #8f6b0c;
+}
+
+.em-specimen-name {
+  font-size: 9.5px;
+  font-weight: 600;
+  color: var(--ink-muted);
+}
+
+.em-meta {
+  min-width: 0;
+}
+
+.em-category {
+  display: inline-block;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: rgba(20, 136, 219, 0.12);
+  color: var(--navy);
+  font-size: 11px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.em-title {
+  margin: 0 0 4px;
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--navy);
+}
+
+.em-config {
+  margin: 0;
+  font-size: 12.5px;
+  color: var(--ink-muted);
+}
+
+.em-config code {
+  padding: 2px 6px;
+  border-radius: 6px;
+  background: var(--white);
+  border: 1px solid rgba(3, 43, 145, 0.12);
+  color: var(--navy);
+  font-weight: 600;
+}
+
+.em-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.em-box {
+  padding: 14px 15px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+}
+
+.em-box--chem {
+  background: #f5f9ff;
+  border-color: rgba(20, 136, 219, 0.24);
+}
+
+.em-box--person {
+  background: #fffcf2;
+  border-color: rgba(212, 175, 55, 0.45);
+}
+
+.em-box-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.em-box-icon {
+  font-size: 17px;
+  line-height: 1;
+}
+
+.em-box-header h4 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.em-box--person .em-box-header h4 {
+  color: #7c5c08;
+}
+
+.em-box p {
+  margin: 0;
+  font-size: 13.8px;
+  line-height: 1.62;
+  color: var(--ink);
+}
+
+.element-modal-footer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-top: 16px;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .envelope-degree {
@@ -798,14 +1068,15 @@ textarea {
 }
 
 .hero-name {
-  margin: 2px 0 0;
-  padding: 2px 4px;
-  font-family: var(--font-serif);
-  font-size: clamp(30px, 8.2vw, 56px);
+  margin: 4px 0 0;
+  padding: 6px 12px;
+  font-family: var(--font-script);
+  font-size: clamp(48px, 12.6vw, 78px);
   font-weight: 400;
-  line-height: 1.2;
+  line-height: 1.22;
   color: var(--navy);
-  letter-spacing: 0.025em;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
 }
 
 .gold-divider {
